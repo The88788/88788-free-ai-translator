@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {translations} from '../lib/i18n.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));
+const html=fs.readFileSync(path.join(root,'sidebar.html'),'utf8');
+const keys=[...html.matchAll(/data-i18n(?:-title|-aria|-placeholder)?="([^"]+)"/g)].map(m=>m[1]);
+for(const locale of ['ru','en']){
+  const localeMessages=JSON.parse(fs.readFileSync(path.join(root,'_locales',locale,'messages.json'),'utf8'));
+  assert.ok(localeMessages.extensionDescription.message);
+  assert.ok(localeMessages.translateSelection.message);
+  for(const key of keys) assert.ok(translations[locale][key],`Missing ${locale}:${key}`);
+}
+assert.equal(manifest.name,'88788 Free AI Translator');
+assert.equal(manifest.version,'0.4.1');
+assert.equal(manifest.developer.name,'88788');
+assert.equal(manifest.author,'88788');
+assert.equal(manifest.developer.url,'https://the88788.com/');
+assert.equal(manifest.permissions.includes('alarms'),true);
+assert.equal(html.includes('id="routeBadge"'),false);
+assert.ok(html.includes('id="providerInfo"'));
+assert.ok(translations.ru.providerKnown && translations.en.providerUnknown);
+assert.ok(!html.match(/<header[^>]*>[\s\S]*?auto:light[\s\S]*?<\/header>/));
+assert.ok(manifest.optional_host_permissions.includes('https://*/*'));
+assert.ok(!('host_permissions' in manifest));
+assert.equal(manifest.default_locale,'en');
+assert.deepEqual(new Set(Object.keys(translations.ru)),new Set(Object.keys(translations.en)));
+console.log(`PASS: ${keys.length} localized HTML strings, RU/EN keys, manifest and optional API permissions`);

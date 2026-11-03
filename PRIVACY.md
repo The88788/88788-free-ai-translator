@@ -1,0 +1,15 @@
+# Privacy policy / Политика конфиденциальности
+
+**88788 Free AI Translator** does not collect analytics, inject advertisements, or send usage telemetry to its developer. The extension reads user-selected website text to show it in the sidebar. Selection text is held in extension memory; when the user presses Translate or Another translation, that text and a short translation instruction are sent by HTTPS (or HTTP to an explicitly configured local loopback server) to the API endpoint chosen by the user. API credentials, when provided, are sent to that endpoint in the Authorization header. That endpoint may forward the request to third-party model providers and is subject to its own privacy policy.
+
+The configured endpoint, model/route, UI language, language pair, API key, and translation cache are stored locally in the user's Firefox profile (`browser.storage.local`). Cache entries store successful translation text, model attribution, and the responding provider (if disclosed by the API), indexed by a SHA-256 hash that uses the source text, endpoint, API key, language pair and model. Those hashes are not reversible in normal use but do not constitute encryption of the stored translations. Cached translations expire after 30 days; expired items are automatically purged at extension startup and daily while Firefox is running, and the cache is limited to 200 entries. The user may clear the cache inside extension settings, or remove all locally stored extension data through Firefox. The extension does not communicate with any server owned by the developer unless the user selects it as their API endpoint.
+
+We do not sell personal data. No data is used for advertising or behavioral profiling. The developer cannot access the user's stored key or translations via the extension. **Users should not translate sensitive content through an API service they do not trust.** This project operates without a developer-hosted backend or external library.
+
+## Русский
+
+**88788 Free AI Translator** не собирает аналитику, не показывает рекламу и не отправляет телеметрию разработчику. Расширение считывает выделенный пользователем текст и показывает его в боковой панели. Только при нажатии «Перевести» или «Другой перевод» выделенный текст и инструкция на перевод отправляются на API, самостоятельно указанный пользователем. API-ключ, если он указан, передаётся на этот сервер в заголовке авторизации. Далее сервер может пересылать текст сторонним поставщикам моделей согласно их условиям.
+
+Настройки, ключ API и кеш перевода хранятся локально в профиле Firefox. Кеш содержит **сами тексты переводов** и названия моделей; ключи поиска записей вычисляются через SHA-256 с учётом текста, адреса API, ключа, языков и модели. Переводы хранятся до 30 дней, не более 200 записей. Просроченные записи удаляются при запуске расширения и ежедневно. Кеш можно очистить в настройках расширения. Телеметрии, рекламного профилирования и продажи данных нет. Разработчик не получает доступа к локальным настройкам, если пользователь специально не настроил API разработчика.
+
+Не отправляйте конфиденциальные данные поставщику API, которому не доверяете.

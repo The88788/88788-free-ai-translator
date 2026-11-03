@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>88788 Free AI Translator</title>
+  <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon.svg" width="34" height="34" alt="">
+        <div><strong>88788 Free AI</strong><small>Translator</small></div>
+      </div>
+      <button id="toggleSettings" class="iconButton" data-i18n-title="apiSettings" data-i18n-aria="apiSettings">⚙</button>
+    </header>
+
+    <section class="settings" id="settings" hidden>
+      <h2 data-i18n="connectionSettings">Connection settings</h2>
+      <label for="uiLanguage" data-i18n="interfaceLanguage">Interface language</label>
+      <select id="uiLanguage" class="wide">
+        <option value="auto" data-i18n="followFirefox">Firefox language</option>
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+      <label for="endpoint" data-i18n="endpointLabel">OpenAI-compatible API base URL</label>
+      <input id="endpoint" type="url" autocomplete="off" spellcheck="false" placeholder="https://example.com/v1">
+      <p class="muted tiny" data-i18n="endpointHelp">Base URL; /chat/completions will be appended automatically.</p>
+      <label for="apiKey" data-i18n="apiKeyLabel">API key</label>
+      <div class="keyRow"><input id="apiKey" type="password" autocomplete="off" spellcheck="false" placeholder="API key"><button id="toggleKey" data-i18n-title="showHideKey" data-i18n-aria="showHideKey">👁</button></div>
+      <label for="providerKind" data-i18n="providerLabel">API type</label>
+      <select id="providerKind" class="wide">
+        <option value="freellmapi" data-i18n="providerFreeLLMAPI">FreeLLMAPI gateway</option>
+        <option value="other" data-i18n="providerOther">Other OpenAI-compatible API</option>
+      </select>
+      <p class="muted tiny" data-i18n="providerHelp">The Another translation button is available only for FreeLLMAPI.</p>
+      <label for="model" data-i18n="routeLabel">Model or route</label>
+      <input id="model" type="text" autocomplete="off" spellcheck="false" list="routeSuggestions" placeholder="auto:default or provider/model-id">
+      <datalist id="routeSuggestions"><option value="auto:default"><option value="openrouter/free"></datalist>
+      <p class="muted tiny" data-i18n="routeHelp">For FreeLLMAPI, use auto:default or any route you configured. For other providers, enter a valid model ID.</p>
+      <p class="muted tiny" data-i18n="privacyHelp">Your key and cached translations are stored locally in Firefox. Selected text is sent to your chosen API only after you click Translate.</p>
+      <button id="saveSettings" class="secondary wide" data-i18n="saveSettings">Save settings</button>
+      <button id="clearCache" class="textButton clearCache" data-i18n="clearCache" data-i18n-title="clearCacheTitle">Clear translation cache</button>
+      <p class="muted tiny" data-i18n="cacheHelp">Up to 200 translations for 30 days. Expired cache entries are cleared automatically.</p>
+      <div id="settingsStatus" class="hint" aria-live="polite"></div>
+    </section>
+
+    <section class="languages" data-i18n-aria="languageSelection">
+      <div class="languageSelect"><label for="sourceLang" data-i18n="sourceLanguage">From</label>
+        <select id="sourceLang"></select>
+      </div>
+      <button id="swap" class="swap" data-i18n-title="swapLanguages" data-i18n-aria="swapLanguages">⇄</button>
+      <div class="languageSelect"><label for="targetLang" data-i18n="targetLanguage">To</label>
+        <select id="targetLang"></select>
+      </div>
+    </section>
+
+    <section class="translationInput">
+      <div class="sectionHead"><label for="sourceText" data-i18n="selectedText">Selected text</label><button id="grab" class="textButton" data-i18n="getSelection" data-i18n-title="getSelectionTitle">↻ Get from page</button></div>
+      <textarea id="sourceText" rows="7" spellcheck="false" data-i18n-placeholder="textPlaceholder" placeholder="Select text on a page or paste here"></textarea>
+      <div class="underInput"><span id="charCount">0 / 5000</span><button id="clear" class="textButton" data-i18n="clear">Clear</button></div>
+    </section>
+
+    <button id="translate" class="primary wide"><span id="translateLabel" data-i18n="translate">🌐 Translate</span></button>
+    <div id="status" class="hint" aria-live="polite"></div>
+
+    <section class="translationOutput">
+      <div class="sectionHead"><h2 data-i18n="translationTitle">Translation</h2><button id="copy" class="textButton" disabled data-i18n="copy">⧉ Copy</button></div>
+      <div id="translated" class="result" role="status" aria-live="polite"></div>
+      <div id="modelInfo" class="modelInfo" hidden></div>
+      <div id="providerInfo" class="modelInfo" hidden></div>
+      <button id="alternate" class="secondary wide alternate" hidden data-i18n="alternate" data-i18n-title="alternateTitle">↻ Another translation</button>
+    </section>
+    <footer><span data-i18n="footer">No ads · No subscriptions · Your API</span> · <a href="https://the88788.com/" target="_blank" rel="noopener noreferrer">the88788.com</a></footer>
+  </main>
+  <script type="module" src="sidebar.mjs"></script>
+</body>
+</html>

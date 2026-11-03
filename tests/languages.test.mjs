@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {LANGUAGE_CODES,PREFERRED_CODES,languageName,sortedLanguageCodes} from '../lib/languages.mjs';
+import {buildMessages} from '../lib/api.mjs';
+assert.ok(LANGUAGE_CODES.length>=70);
+assert.equal(new Set(LANGUAGE_CODES).size,LANGUAGE_CODES.length);
+assert.deepEqual(sortedLanguageCodes('ru').slice(0,5),PREFERRED_CODES);
+assert.equal(languageName('zh','ru'),'Китайский (упрощённый)');
+assert.match(languageName('de','ru'),/немецк/i);
+assert.match(languageName('ja','en'),/japanese/i);
+assert.equal(buildMessages('Hallo','de','ru')[0].role,'system');
+assert.match(buildMessages('你好','zh','ru')[0].content,/Chinese \(Simplified\)/);
+assert.throws(()=>buildMessages('x','xx','ru'));
+assert.throws(()=>buildMessages('x','auto','auto'));
+console.log(`PASS: ${LANGUAGE_CODES.length} languages; RU/EN display names; dynamic prompt validation`);

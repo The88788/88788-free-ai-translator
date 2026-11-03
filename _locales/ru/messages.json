@@ -1,0 +1,4 @@
+{
+  "extensionDescription": {"message": "Перевод выделенного текста в Firefox через любой совместимый OpenAI Chat Completions API, включая свой FreeLLMAPI."},
+  "translateSelection": {"message": "Перевести выделение через 88788 Free AI Translator"}
+}

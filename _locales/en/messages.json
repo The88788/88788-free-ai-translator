@@ -1,0 +1,4 @@
+{
+  "extensionDescription": {"message": "Translate selected text in Firefox using any compatible OpenAI-style Chat Completions API, including self-hosted FreeLLMAPI."},
+  "translateSelection": {"message": "Translate selection with 88788 Free AI Translator"}
+}

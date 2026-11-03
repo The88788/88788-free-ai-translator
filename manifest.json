@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "88788 Free AI Translator",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
+  "version": "0.4.1",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "translator@the88788.com",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent",
+          "authenticationInfo"
+        ]
+      },
+      "update_url": "https://translator.the88788.com/updates.json"
+    }
+  },
+  "permissions": [
+    "storage",
+    "menus",
+    "alarms"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "type": "module"
+  },
+  "sidebar_action": {
+    "default_title": "88788 Free AI Translator",
+    "default_panel": "sidebar.html",
+    "default_icon": "icons/icon.svg",
+    "open_at_install": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "developer": {
+    "name": "88788",
+    "url": "https://the88788.com/"
+  },
+  "homepage_url": "https://the88788.com/",
+  "author": "88788"
+}
