@@ -6,7 +6,8 @@
 
 [Official website / Официальный сайт / 官方网站](https://translator.the88788.com/) · [Download / Скачать / 下载](https://github.com/The88788/88788-free-ai-translator/releases/tag/v0.4.1) · [Privacy](PRIVACY.md) · [Changelog](CHANGELOG.md)
 
-![88788 Free AI Translator — Firefox sidebar](docs/images/sidebar.png)
+<img src="docs/images/sidebar-dark.png" alt="Firefox sidebar — dark theme" width="420">
+<img src="docs/images/sidebar-light.png" alt="Firefox sidebar — light theme" width="420">
 
 ## English
 

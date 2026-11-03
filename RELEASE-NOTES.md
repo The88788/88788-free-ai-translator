@@ -74,7 +74,8 @@ Website: https://the88788.com/
 - `88788-free-ai-translator-0.4.1-source.zip` — unsigned source archive / архив исходников без подписи.
 - `SHA256SUMS.txt` — SHA-256 checksums / контрольные суммы.
 
-![Firefox sidebar](https://raw.githubusercontent.com/The88788/88788-free-ai-translator/v0.4.1/docs/images/sidebar.png)
+<img src="https://raw.githubusercontent.com/The88788/88788-free-ai-translator/main/docs/images/sidebar-dark.png" alt="Firefox sidebar — dark theme" width="420">
+<img src="https://raw.githubusercontent.com/The88788/88788-free-ai-translator/main/docs/images/sidebar-light.png" alt="Firefox sidebar — light theme" width="420">
 
 ---
 
